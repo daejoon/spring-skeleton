@@ -3,18 +3,19 @@
 
 ## 구조
 ```
-.
-├── README.md
-├── build.gradle
-├── docker-compose.yml
-├── docs
-├── env
-├── gradle
-├── gradlew
-├── gradlew.bat
-├── lombok.config
-├── settings.gradle
-├── skeleton-core
-├── skeleton-web
-└── sketleton-api
+spring-skeleton
+  ├── docs
+  ├── env
+  ├── gradle
+  ├── skeleton-core/
+  ├── skeleton-web/
+  ├── sketleton-api/
+  ├── .gitignore
+  ├── build.gradle
+  ├── docker-compose.yml
+  ├── gradlew
+  ├── gradlew.bat
+  ├── lombok.config
+  ├── README.md
+  └── settings.gradle
 ```
