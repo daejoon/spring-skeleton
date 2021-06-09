@@ -1,0 +1,14 @@
+# gradle
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# intellij
+.idea
+.gradle
+out
+build
+env/mysql/data
+env/logs
+generated/
+.envrc
+node_modules/

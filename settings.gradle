@@ -1,0 +1,5 @@
+rootProject.name = 'spring-skeleton'
+include 'skeleton-core'
+include 'sketleton-api'
+include 'skeleton-web'
+
