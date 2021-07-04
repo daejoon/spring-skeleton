@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.5.1'
+        springBootVersion = '2.5.2'
     }
     repositories {
         jcenter()
@@ -36,7 +36,6 @@ subprojects {
         jcenter()
         mavenCentral()
     }
-
 
     dependencies {
         implementation 'org.projectlombok:lombok'
