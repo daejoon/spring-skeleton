@@ -22,6 +22,10 @@ subprojects {
 
     sourceCompatibility = '1.8'
 
+    jar {
+        enabled = false
+    }
+
     configurations {
         developmentOnly
         runtimeClasspath {
