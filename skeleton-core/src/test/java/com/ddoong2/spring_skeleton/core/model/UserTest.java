@@ -21,15 +21,15 @@ class UserTest {
     @DisplayName("유저를 저장한다")
     void 유저를_저장한다() throws Exception {
 
-        final long id = 1L;
         final User user = User.builder()
                 .name("홍길동")
                 .age(15)
                 .build();
 
         em.persist(user);
-        final User findUser = em.find(User.class, id);
-        assertThat(findUser.getId()).isEqualTo(id);
+        final User findUser = em.find(User.class, user.getId());
+
+        assertThat(findUser.getId()).isEqualTo(user.getId());
         assertThat(findUser.getName()).isEqualTo("홍길동");
     }
 
