@@ -21,8 +21,9 @@ class UserTest {
     @DisplayName("유저를 저장한다")
     void 유저를_저장한다() throws Exception {
 
+        final String name = "홍길동";
         final User user = User.builder()
-                .name("홍길동")
+                .name(name)
                 .age(15)
                 .build();
 
@@ -30,7 +31,7 @@ class UserTest {
         final User findUser = em.find(User.class, user.getId());
 
         assertThat(findUser.getId()).isEqualTo(user.getId());
-        assertThat(findUser.getName()).isEqualTo("홍길동");
+        assertThat(findUser.getName()).isEqualTo(name);
     }
 
 }
