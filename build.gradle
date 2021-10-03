@@ -8,16 +8,14 @@ allprojects {
         mavenCentral()
     }
 }
-allprojects {
-}
 
 subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'java'
 
-    group 'com.ddoong2.skeleton'
-    version '0.1.0'
+    group = 'com.ddoong2.skeleton'
+    version = '0.1.0'
     sourceCompatibility = '11'
 
     jar {
