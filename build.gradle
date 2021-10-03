@@ -1,17 +1,14 @@
-buildscript {
-    ext {
-        springBootVersion = '2.5.4'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-    }
+plugins {
+    id 'org.springframework.boot' version '2.5.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 allprojects {
-    group 'com.ddoong2.skeleton'
+    repositories {
+        mavenCentral()
+    }
+}
+allprojects {
 }
 
 subprojects {
@@ -19,7 +16,9 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'java'
 
-    sourceCompatibility = '1.8'
+    group 'com.ddoong2.skeleton'
+    version '0.1.0'
+    sourceCompatibility = '11'
 
     jar {
         enabled = false
@@ -31,33 +30,29 @@ subprojects {
         }
     }
 
-    repositories {
-        mavenCentral()
-    }
-
     dependencies {
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
         testCompileOnly 'org.projectlombok:lombok'
         testAnnotationProcessor 'org.projectlombok:lombok'
-        testImplementation('org.springframework.boot:spring-boot-starter-test') {
-            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-        }
+        // @ConfigurationProperties를 사용하기 위한 의존성
+        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     }
+    //https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html#configuration-metadata.annotation-processor.configuring
+    compileJava.inputs.files(processResources)
 
     test {
         useJUnitPlatform()
     }
 
-    def generatedSourceDir = file("$projectDir/src/main/generated/")
-    def generatedTestsSourceDir = file("$projectDir/src/test/generated_tests/")
-    // IntelliJ IDEA 용
-    def outClassesDir = file("$projectDir/out")
     clean.doLast {
         // clean-up directory when necessary
-        file(generatedSourceDir).deleteDir()
-        file(generatedTestsSourceDir).deleteDir()
+        file("$projectDir/src/main/generated/").deleteDir()
+        file("$projectDir/src/test/generated_tests/").deleteDir()
         // IntelliJ IDEA 용
-        file(outClassesDir).deleteDir()
+        file("$projectDir/out").deleteDir()
     }
 }
