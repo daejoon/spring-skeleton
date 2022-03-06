@@ -26,52 +26,52 @@ import javax.sql.DataSource;
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 @AutoConfigureBefore(DataSourceAutoConfiguration.class)
 @EnableConfigurationProperties({
-        SkeletonReadDataSourceProperties.class,
-        SkeletonWriteDataSourceProperties.class
+        SkeletonDataSourceReadProperties.class,
+        SkeletonDataSourceWriteProperties.class
 })
 public class SkeletonDataSourceAutoConfiguration {
 
     @Bean
-    public DataSource writeDataSource(final SkeletonWriteDataSourceProperties writeDataSourceProperties) {
+    public DataSource writeDataSource(final SkeletonDataSourceWriteProperties writeProperties) {
 
-        log.info("SkeletonDataSourceAutoConfiguration: 'writeDataSource' ");
+        log.info("SkeletonDataSourceAutoConfiguration: 'writeDataSource'");
         return DataSourceBuilder.create()
                 .type(HikariDataSource.class)
-                .driverClassName(writeDataSourceProperties.getDriverClassName())
-                .url(writeDataSourceProperties.getJdbcUrl())
-                .username(writeDataSourceProperties.getUsername())
-                .password(writeDataSourceProperties.getPassword())
+                .driverClassName(writeProperties.getDriverClassName())
+                .url(writeProperties.getJdbcUrl())
+                .username(writeProperties.getUsername())
+                .password(writeProperties.getPassword())
                 .build();
     }
 
     @Bean
-    public DataSource readDataSource(final SkeletonReadDataSourceProperties readDataSourceProperties) {
+    public DataSource readDataSource(final SkeletonDataSourceReadProperties readProperties) {
 
-        log.info("SkeletonDataSourceAutoConfiguration: 'readDataSource' ");
+        log.info("SkeletonDataSourceAutoConfiguration: 'readDataSource'");
         return DataSourceBuilder.create().type(HikariDataSource.class)
                 .type(HikariDataSource.class)
-                .driverClassName(readDataSourceProperties.getDriverClassName())
-                .url(readDataSourceProperties.getJdbcUrl())
-                .username(readDataSourceProperties.getUsername())
-                .password(readDataSourceProperties.getPassword())
+                .driverClassName(readProperties.getDriverClassName())
+                .url(readProperties.getJdbcUrl())
+                .username(readProperties.getUsername())
+                .password(readProperties.getPassword())
                 .build();
     }
 
     @Bean
-    public DataSource routingDataSource(final SkeletonWriteDataSourceProperties writeDataSourceProperties,
-                                        final SkeletonReadDataSourceProperties readDataSourceProperties) {
+    public DataSource routingDataSource(final SkeletonDataSourceWriteProperties writeProperties,
+                                        final SkeletonDataSourceReadProperties readProperties) {
 
-        log.info("SkeletonDataSourceAutoConfiguration: 'routingDataSource' ");
-        return ReplicationRoutingDataSource.of(writeDataSource(writeDataSourceProperties) ,
-                readDataSource(readDataSourceProperties));
+        log.info("SkeletonDataSourceAutoConfiguration: 'routingDataSource'");
+        return ReplicationRoutingDataSource.of(writeDataSource(writeProperties) ,
+                readDataSource(readProperties));
     }
 
     @Bean
     @Primary
-    public DataSource dataSource(final SkeletonWriteDataSourceProperties writeDataSourceProperties,
-                                 final SkeletonReadDataSourceProperties readDataSourceProperties) {
+    public DataSource dataSource(final SkeletonDataSourceWriteProperties writeProperties,
+                                 final SkeletonDataSourceReadProperties readProperties) {
 
-        log.info("SkeletonDataSourceAutoConfiguration:'datasource' ");
-        return new LazyConnectionDataSourceProxy(routingDataSource(writeDataSourceProperties, readDataSourceProperties));
+        log.info("SkeletonDataSourceAutoConfiguration:'datasource'");
+        return new LazyConnectionDataSourceProxy(routingDataSource(writeProperties, readProperties));
     }
 }

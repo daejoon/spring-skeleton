@@ -11,8 +11,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ConfigurationProperties(prefix = "skeleton.datasource.read")
-public class SkeletonReadDataSourceProperties {
+@ConfigurationProperties(prefix = "skeleton.datasource.write")
+public class SkeletonDataSourceWriteProperties {
     private String driverClassName;
     private String jdbcUrl;
     private String username;
