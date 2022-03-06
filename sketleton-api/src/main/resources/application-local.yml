@@ -1,0 +1,23 @@
+logging.level:
+  com.ddoong2.skeleton: debug
+
+## 설정을 주석처리하면 H2가 로드된다.
+skeleton.datasource:
+  write:
+    driver-class-name: org.h2.Driver
+    jdbc-url: jdbc:h2:mem:dcrdb
+    username: sa
+    password:
+  read:
+    driver-class-name: org.h2.Driver
+    jdbc-url: jdbc:h2:mem:dcrdb
+    username: sa
+    password:
+
+## 이걸 설정하면 자동설정이 로드되지 않는다
+#spring:
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:dcrdb
+#    username: sa
+#    password:

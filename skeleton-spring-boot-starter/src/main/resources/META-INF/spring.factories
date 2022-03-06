@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration= \
+  com.ddoong2.spring_sketeton.springbootstarter.configuration.SkeletonDataSourceAutoConfiguration

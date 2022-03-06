@@ -5,7 +5,12 @@ plugins {
 
 allprojects {
     repositories {
+        mavenLocal()
         mavenCentral()
+    }
+    ext {
+        // spring boot 2.6.x와 호환되는 spring cloud 버전
+        set('springBootVersion', '2.6.3')
     }
 }
 

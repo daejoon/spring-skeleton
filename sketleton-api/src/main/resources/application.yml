@@ -1,0 +1,6 @@
+spring.profiles.active: local
+
+skeleton.name: Skeleton Api
+spring:
+  jpa:
+    open-in-view: false
