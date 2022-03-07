@@ -13,5 +13,5 @@ generated/
 .envrc
 node_modules/
 
-# Max
+# Mac
 .DS_Store

@@ -1,21 +1,9 @@
 # Spring Skeleton
 > Spring Boot를 최신화 하여 나만의 틀을 만들기
 
-## 구조
+### skeleton-spring-boot-starter 로컬 Maven Repository에 배포 하기
 ```
-spring-skeleton
-  ├── docs
-  ├── env
-  ├── gradle
-  ├── skeleton-core/
-  ├── skeleton-web/
-  ├── sketleton-api/
-  ├── .gitignore
-  ├── build.gradle
-  ├── docker-compose.yml
-  ├── gradlew
-  ├── gradlew.bat
-  ├── lombok.config
-  ├── README.md
-  └── settings.gradle
+$ ./gradlew skeleton-spring-boot-starter:clean \
+ skeleton-spring-boot-starter:build \
+ skeleton-spring-boot-starter:publishToMavenLocal
 ```
