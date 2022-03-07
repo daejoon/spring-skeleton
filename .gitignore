@@ -12,3 +12,6 @@ env/logs
 generated/
 .envrc
 node_modules/
+
+# Max
+.DS_Store
