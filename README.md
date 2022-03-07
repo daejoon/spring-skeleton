@@ -7,3 +7,8 @@ $ ./gradlew skeleton-spring-boot-starter:clean \
  skeleton-spring-boot-starter:build \
  skeleton-spring-boot-starter:publishToMavenLocal
 ```
+
+### MySQL DB 구동
+```
+$ docker-compose up -d --build
+```
