@@ -20,7 +20,7 @@ public class InitRunner implements ApplicationRunner {
     @Transactional
     @Override
     public void run(final ApplicationArguments args) throws Exception {
-        for (int i = 1; i <= 15; i++) {
+        for (int i = 1; i <= 200; i++) {
             final Room room = Room.builder()
                     .id((long) i)
                     .name(String.format("%d 방", i))
@@ -38,6 +38,5 @@ public class InitRunner implements ApplicationRunner {
                 entityManager.persist(student);
             }
         }
-
     }
 }
