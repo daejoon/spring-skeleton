@@ -1,7 +1,0 @@
-rootProject.name = 'spring-skeleton'
-include 'skeleton-core'
-include 'sketleton-api'
-include 'skeleton-web'
-include 'skeleton-batch'
-include 'skeleton-spring-boot-starter'
-
